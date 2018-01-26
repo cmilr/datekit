@@ -1,40 +1,41 @@
-# Product Name
+# Swift-DateKit
 
-One to two paragraph statement about your product and what it does.
+DateKit gives you a handy way to provide the current date to your iOS app, while simultaneously making it quick and easy to mock dates in your tests.
 
-![](screenshot.png)
+In production code, you can simply use **DateKit.now()** to get the current date, instead of using Date() or NSDate().
+
+Then, in your test code, you can mock the current date by calling **DateKit.mockCurrentDate(as:)**, and passing in a string of the format **"yyyy-MM-dd HH:mm:ss"**.
+
+DateKit also provides a helper method — **getDate(as:)** — for creating standalone dates. This is just a wrapper to make it easier and more succinct to create a date object.
 
 ## Installation
 
-OS X & Linux:
-
-```sh
-npm install my-crazy-module --save
-```
-
-Windows:
-
-```sh
-edit autoexec.bat
-```
+Drag **DateKit.swift** into your Xcode project.
 
 ## Usage example
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+In your production code:
+```swift
+let account.activationDate = DateKit.now()
+```
+In your test suite:
+```swift
+// Change the current date to whatever you like
+DateKit.mockCurrentDate(as: "1999/12/31 23:59:59")
 
-## Development setup
+// Mock other dates as needed
+let account.previousActivationDate = DateKit.getDate(as: "1999/12/30 23:59:59")
 
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
-
-```sh
-make install
-npm test
+// Now assert something
+let actual = widget.currentDaysActive
+let expected = 1
+XCTAssertEqual(expected, actual)
 ```
 
-## Questions? Drop Us a Line!
+## Questions? Drop me a line!
 
 ### Contact
-- Email: cary.a.miller@gmail.com
+- Email: cary@cmillerco.com
 - Twitter: [@cmillerco](https://twitter.com/cmillerco)
 - GitHub: [cmilr](https://github.com/cmilr/)
 
