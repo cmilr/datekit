@@ -29,7 +29,7 @@ DateKit.mockCurrentDate(as: "1999/12/31 23:59:59")
 account.previousActivationDate = DateKit.getDate(as: "1999/12/30 23:59:59")
 
 // Now assert something
-let actual = widget.currentDaysActive
+let actual = account.currentDaysActive
 let expected = 1
 XCTAssertEqual(expected, actual)
 ```
