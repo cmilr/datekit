@@ -1,12 +1,14 @@
-# Swift-DateKit
+# DateKit
 
 DateKit gives you a handy way to provide the current date to your iOS app, while simultaneously making it quick and easy to mock dates in your tests.
 
-In production code, you can simply use **DateKit.now()** to get the current date, instead of using Date() or NSDate().
+In production code, you simply call **DateKit.now()** to get the current date, instead of using Date() or NSDate().
 
-Then, in your test code, you can mock the current date by calling **DateKit.mockCurrentDate(as:)**, and passing in a string of the format **"yyyy-MM-dd HH:mm:ss"**.
+Then, in test code, you can mock the current date by calling **DateKit.mockCurrentDate(as:)**, and passing in a string of the format **"yyyy-MM-dd HH:mm:ss"**. At this point, **DateKit.now()** will return the mocked date/time instead of the actual date/time.
 
-DateKit also provides a helper method — **getDate(as:)** — for creating standalone dates. This is just a wrapper to make it easier and more succinct to create a date object.
+DateKit also provides a helper method — **getDate(as:)** — for creating standalone dates. This is a simple wrapper to make it easier and more succinct to create a new date object.
+
+DateKit also provides you with ample warning when you're running on mocked dates:
 
 ## Installation
 
