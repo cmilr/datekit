@@ -42,25 +42,33 @@ Drag the **DateKit** directory into your Xcode project.
 
 ## DateKit Usage Example
 
-In your production code, use **DateKit.now()** anywhere you need access to the current date, such as:
+In your production code, use **DateKit.now()** anywhere you would normally use Date() or NSDate(), such as in this contrived code sample:
 ```swift
-let account.activationDate = DateKit.now()
+account.activationDate = DateKit.now()
 ```
-Now, in your unit tests, you can set the current date to whatever you like by using **DateKit.mockCurrentDate(as:)**
+Now, in your unit tests, you can control what **DateKit.now()** returns by using **DateKit.mockCurrentDate(as:)**—which means you can effectively move your tests forward in time to make sure that time/date-critical code works the way you intended.
 ```swift
-DateKit.mockCurrentDate(as: "1999/12/31 23:59:59")
+func testUserMembershipYears_givenOneYear_returnsCorrectCount() {
+	DateKit.mockCurrentDate(as: "2017/11/17 23:59:59")
+	let testUser = AccountManager.initializeNewAccount()
+	DateKit.mockCurrentDate(as: "2018/11/28 03:21:18")
+	let actual = testUser.membershipYears
+	let expected = 1
+	XCTAssertEqual(expected, actual)
+}
 ```
-And should you need, you can mock other types of dates as well using **DateKit.getDate(as:)**
+Should you need, you can mock other dates as well, using **DateKit.getDate(as:)**—like I do here to test that my numDaysElapsed(from:to:) method is functioning correctly.
 ```swift
-account.previousActivationDate = DateKit.getDate(as: "1999/12/30 23:59:59")
+func testNumDaysElapsed_givenSameDate_returnsZero() {
+      var begin = DateKit.getDate(as: "2018-08-09 00:30:30")
+      var end = DateKit.getDate(as: "2018-08-09 05:22:18")
+      var expected = 0
+      var actual = numDaysElapsed(from: begin, to: end)
+      XCTAssertEqual(expected, actual)
+}
 ```
-Now assert something:
-```swift
-// Test computed property currentDaysActive returns correct count
-let actual = account.currentDaysActive
-let expected = 1
-XCTAssertEqual(expected, actual)
-```
+## DateKitUI Usage Example
+To come...
 
 ## Contact
 - Email: cary@cmillerco.com
