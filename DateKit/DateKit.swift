@@ -1,12 +1,12 @@
 //
 //  DateKit.swift
-//  FieldManual
 //
 //  Created by Cary Miller on 1/26/18.
-//  Copyright © 2018 C.Miller & Co. All rights reserved.
+//  Copyright © 2018 Cary Miller.
 //
 
 import Foundation
+import UIKit
 
 /**
    DateKit gives you a handy way to provide the current date to your app,
@@ -15,7 +15,7 @@ import Foundation
 
    In production code, you simply use **DateKit.now()** to get the current date.
 
-   In test code, you can mock the current date by calling
+   Now, in test code you can mock the current date by calling
    **DateKit.mockCurrentDate(as:)**, and passing in a string of the format
    "yyyy-MM-dd HH:mm:ss".
 
@@ -31,16 +31,14 @@ class DateKit {
    /**
     Returns the current date by default, but returns a mocked date if called after setting **mockCurrentDate(as:)**.
 
-    - warning: As a safeguard, mocking the current date only works in **DEBUG** code.
+    - warning: As a safeguard, mocking the current date only works in **DEBUG** configuration.
     - returns: A Date() object.
     */
    #if DEBUG
       static func now() -> Date {
          if let mockedDate = mockedDate {
-            print("🔥 CAUTION! Current date is being mocked. 🔥")
             return mockedDate
          } else {
-            print("✨🦄 SMILE! Current date is a sparkly unicorn! 🦄✨")
             return Date()
          }
       }
@@ -66,6 +64,16 @@ class DateKit {
    }
 
    /**
+    Sets the current date to a mock value.
+
+    - parameter as: A Date() object in the format of: "yyyy-MM-dd HH:mm:ss"
+    - returns: Nothing
+    */
+   static func mockCurrentDate(as mockDate: Date) {
+      mockedDate = mockDate
+   }
+
+   /**
     Returns a Date() object customized to your specifications.
 
     - parameter as: A date string in the format of: "yyyy-MM-dd HH:mm:ss"
@@ -78,5 +86,27 @@ class DateKit {
             "Check that your date string is formatted correctly.")
       }
       return date
+   }
+
+   /**
+    Returns an NSDate() object customized to your specifications.
+
+    - parameter as: A date string in the format of: "yyyy-MM-dd HH:mm:ss"
+    - returns: An NSDate() object.
+    */
+   static func getNSDate(as date: String) -> NSDate {
+      return getDate(as: date) as NSDate
+   }
+
+   /**
+    Configures a hidden UITextField subclass that allows for easily mocking the current date in UI tests.
+
+    - parameter: Parent UIView.
+    - returns: Nothing.
+    */
+   static func enableUITests(view: UIView) {
+      let hiddenTextField = DateKitUI()
+      view.addSubview(hiddenTextField)
+      view.bringSubview(toFront: hiddenTextField)
    }
 }
