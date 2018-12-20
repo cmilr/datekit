@@ -32,27 +32,31 @@ Then, in test code, you can mock the current date by calling **DateKit.mockCurre
 
 DateKit also provides a helper method — **getDate(as:)** — for creating standalone dates. This is a simple wrapper to make it easier and more succinct to create a new date object.
 
-DateKit also provides you with ample warning when you're running on mocked dates:
+# DateKitUI
+
+DateKitUI extends the functionality of DateKit by giving you full control of mocked dates in your Xcode UI tests. Since you can't access the inner workings of your app during UI testing in the same way that you would during a unit test, DateKitUI employs a nearly-hidden UITextField element to allow you to enter date-strings via the UI instead. 
 
 ## Installation
 
-Drag **DateKit.swift** into your Xcode project.
+Drag the **DateKit** directory into your Xcode project.
 
-## Usage example
+## DateKit Usage Example
 
-In your production code:
+In your production code, use **DateKit.now()** anywhere you need access to the current date, such as:
 ```swift
 let account.activationDate = DateKit.now()
 ```
-In your test suite:
+Now, in your unit tests, you can set the current date to whatever you like by using **DateKit.mockCurrentDate(as:)**
 ```swift
-// Change the current date to whatever you like
 DateKit.mockCurrentDate(as: "1999/12/31 23:59:59")
-
-// Mock other dates as needed
+```
+And should you need, you can mock other types of dates as well using **DateKit.getDate(as:)**
+```swift
 account.previousActivationDate = DateKit.getDate(as: "1999/12/30 23:59:59")
-
-// Now assert something
+```
+Now assert something:
+```swift
+// Test computed property currentDaysActive returns correct count
 let actual = account.currentDaysActive
 let expected = 1
 XCTAssertEqual(expected, actual)
