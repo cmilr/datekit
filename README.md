@@ -34,14 +34,12 @@ let expected = 1
 XCTAssertEqual(expected, actual)
 ```
 
-## Questions? Drop me a line!
-
-### Contact
+## Contact
 - Email: cary@cmillerco.com
 - Twitter: [@cmillerco](https://twitter.com/cmillerco)
 - GitHub: [cmilr](https://github.com/cmilr/)
 
-### License
+## License
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
 # Thanks for stopping by!
