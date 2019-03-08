@@ -10,17 +10,17 @@ Badges
 Badge References
 -->
 [mlw-badge]:https://img.shields.io/badge/platform-iOS-8056d5.svg?style=for-the-badge&logo=apple&logoColor=white
-[issues-badge]:https://img.shields.io/github/issues/cmilr/swift-datekit.svg?style=for-the-badge&logo=github&logoColor=white
-[license-badge]:https://img.shields.io/github/license/cmilr/swift-datekit.svg?style=for-the-badge
+[issues-badge]:https://img.shields.io/github/issues/cmilr/datekit.svg?style=for-the-badge&logo=github&logoColor=white
+[license-badge]:https://img.shields.io/github/license/cmilr/datekit.svg?style=for-the-badge
 [coc-badge]:https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=for-the-badge
 
 <!--
 URL References
 -->
-[repo]:https://github.com/cmilr/swift-datekit
-[issues]:https://github.com/cmilr/swift-datekit/issues
-[license]:https://github.com/cmilr/swift-datekit/blob/master/LICENSE
-[coc]:https://github.com/cmilr/swift-datekit/blob/master/CODE_OF_CONDUCT.md
+[repo]:https://github.com/cmilr/datekit
+[issues]:https://github.com/cmilr/datekit/issues
+[license]:https://github.com/cmilr/datekit/blob/master/LICENSE
+[coc]:https://github.com/cmilr/datekit/blob/master/CODE_OF_CONDUCT.md
 
 # DateKit
 
