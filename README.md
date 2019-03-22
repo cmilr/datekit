@@ -68,7 +68,30 @@ func testNumDaysElapsed_givenSameDate_returnsZero() {
 }
 ```
 ## DateKitUI Usage Example
-To come...
+Using DateKitUI in your UI tests is fairly straightforward—first, choose a UIViewController where you'll instantiate and interact with the hidden UITextField.
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    DateKit.enableUITests(view: view)
+}
+```
+Now, in XCTestCase, you can setup your UI tests like this:
+```swift
+override func setUp() {
+    super.setUp()
+    app.launch()
+    date = app.textFields["DateKitUI"]
+}
+```
+Changing the date in your UI tests looks like this:
+```swift
+date.set("1995/1/1 00:00:00")
+```
+And if you like, you can use this handy extension to set the date, close the app, then relaunch it—all in one step:
+```swift
+app.launchTo("2000/1/3 01:02:00")
+```
+That's it! I hope you find DateKit as useful as I have. Now get out there and test, test, test!
 
 ## Contact
 - Email: cary@cmillerco.com
