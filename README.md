@@ -95,7 +95,6 @@ That's it! I hope you find DateKit as useful as I have. Now get out there and te
 
 ## Contact
 - Email: cary@cmillerco.com
-- Twitter: [@cmillerco](https://twitter.com/cmillerco)
 - GitHub: [cmilr](https://github.com/cmilr/)
 
 ## License
